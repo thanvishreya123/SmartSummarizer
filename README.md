@@ -25,4 +25,14 @@ A web application that summarizes YouTube videos using speech-to-text and NLP te
 2.Install dependencies: pip install -r requirements.txt
 3. Create a .env file (if using API keys): GROQ_API_KEY=your_api_key_here
 4. Run the app: python app.py
+## 📷 Demo Screenshots
+
+### 🏠 Home Screen
+![Home Screen](Assets/homeScreen.png)
+
+### 🧠 Summarizer Page
+![Summarizer Page](Assets/SummarizerPage.png)
+
+### 🔐 Admin Login
+![Admin Login](Assets/AdminloginPage.png)
 
