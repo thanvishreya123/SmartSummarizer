@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartSummarize - AI Summarization</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .nav-labels {
+      position: fixed;
+      top: 1rem;
+      right: 1.5rem;
+      z-index: 10;
+      font-size: 1rem;
+    }
+
+    .nav-label {
+      margin-left: 1rem;
+      cursor: pointer;
+      color: #ccc;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .nav-label:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        justify-content: center;
+        text-align: left;
+      }
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px #8a2be2, 0 0 40px #00ffff;
+      animation: fadeSlideIn 1s ease-out forwards;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      text-shadow: 0 0 10px #8a2be2;
+      animation: fadeSlideIn 1s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    .hero img {
+      width: 280px;
+      max-width: 100%;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    #summarize-btn {
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #00ffff, #8a2be2);
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #8a2be2;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #summarize-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00ffff, 0 0 60px #8a2be2;
+    }
+
+    .info-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1000px;
+      text-align: justify;
+    }
+
+    .info-content img {
+      width: 250px;
+      height: auto;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @media (min-width: 768px) {
+      .info-help {
+        flex-direction: row;
+      }
+      .info-about {
+        flex-direction: row-reverse;
+      }
+    }
+
+    .info-text {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      padding: 1rem;
+      color: #ddd;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+      animation: fadeSlideIn 1s ease-out forwards;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: #aaa;
+      z-index: 1;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Top-right Labels -->
+  <div class="nav-labels">
+    <span class="nav-label" onclick="scrollToSection('home')">Home</span>
+    <span class="nav-label" onclick="scrollToSection('help')">Help</span>
+    <span class="nav-label" onclick="scrollToSection('about')">About</span>
+  </div>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Quick Gist</h2>
+        <p>Welcome to <strong>SmartSummarize</strong> — transforming lengthy videos and texts into easy, intelligent summaries using artificial intelligence.</p>
+        <button id="summarize-btn" onclick="window.location.href='http://localhost:8501'">Summarizeeeee</button>
+
+
+      </div>
+      <img src="https://png.pngtree.com/png-vector/20240628/ourmid/pngtree-gray-robot-working-on-laptop-png-image_12841939.png" alt="Robot AI Assistant" />
+    </div>
+  </section>
+
+  <!-- Help Section -->
+  <section id="help">
+    <h3>Help</h3>
+    <div class="info-content info-help">
+      <img src="https://pngimg.com/d/robot_PNG40.png" alt="Help Robot Icon" />
+      <div class="info-text">
+        To use <strong>SmartSummarize</strong>, simply click the “Summarizeeeee” button to get started. You can upload PDFs, paste website URLs, or provide YouTube video links. Our AI will analyze the content and deliver a concise, readable summary almost instantly. This tool is perfect for saving time when studying, working, or researching. Ensure you’re logged in to save your summaries for future reference.
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <!-- About Section -->
+<section id="about">
+  <h3>About</h3>
+  <div class="info-content info-about">
+    <img src="https://png.pngtree.com/png-clipart/20240509/original/pngtree-ai-robot-thinking-3d-pic-png-image_15048295.png" alt="AI Info Bot" />
+    <div class="info-text">
+      <strong>SmartSummarize</strong> is a productivity platform powered by AI designed to extract and condense critical insights from large amounts of information. Whether it’s long videos, complex documents, or lengthy web articles — our tool distills the most important points for you. Built with modern AI models, it’s tailored for students, professionals, and knowledge seekers who value efficiency and clarity in information processing.
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 SmartSummarize. All rights reserved.
+  </footer>
+
+  <!-- Particle Script -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100 },
+        color: { value: "#8a2be2" },
+        shape: { type: "circle" },
+        opacity: { value: 0.7 },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 130,
+          color: "#00ffff",
+          opacity: 0.6,
+          width: 1.5
+        },
+        move: {
+          enable: true,
+          speed: 2.5,
+          direction: "none",
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+</body>
+</html>
